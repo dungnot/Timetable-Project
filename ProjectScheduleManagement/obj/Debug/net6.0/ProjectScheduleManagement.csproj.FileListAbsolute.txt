@@ -276,3 +276,4 @@ D:\Project PRN221\ProjectScheduleManagement\ProjectScheduleManagement\obj\Debug\
 D:\Project PRN221\ProjectScheduleManagement\ProjectScheduleManagement\obj\Debug\net6.0\ProjectScheduleManagement.genruntimeconfig.cache
 D:\Project PRN221\ProjectScheduleManagement\ProjectScheduleManagement\obj\Debug\net6.0\ref\ProjectScheduleManagement.dll
 D:\Project PRN221\ProjectScheduleManagement\ProjectScheduleManagement\bin\Debug\net6.0\CsvHelper.dll
+D:\Project PRN221\ProjectScheduleManagement\ProjectScheduleManagement\obj\Debug\net6.0\ProjectScheduleManagement.sourcelink.json
