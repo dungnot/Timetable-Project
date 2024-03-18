@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using ProjectScheduleManagement.Models;
 
 namespace ProjectScheduleManagement.Pages.Subject
@@ -25,16 +26,15 @@ namespace ProjectScheduleManagement.Pages.Subject
 
         [BindProperty]
         public Models.Subject Subject { get; set; } = default!;
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Subjects == null || Subject == null)
+            if (!ModelState.IsValid || _context.Subjects == null || Subject == null)
             {
                 return Page();
             }
-
             _context.Subjects.Add(Subject);
             await _context.SaveChangesAsync();
 
