@@ -11,7 +11,6 @@ namespace ProjectScheduleManagement.Models
         public int TeacherId { get; set; }
         public int RoomId { get; set; }
         public int SlotId { get; set; }
-        public DateTime Date { get; set; }
 
         public virtual GrClass Class { get; set; } = null!;
         public virtual Room Room { get; set; } = null!;

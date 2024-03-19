@@ -83,9 +83,6 @@ namespace ProjectScheduleManagement.Models
 
                 entity.Property(e => e.ClassId).HasColumnName("classId");
 
-                entity.Property(e => e.Date)
-                    .HasColumnType("datetime")
-                    .HasColumnName("date");
 
                 entity.Property(e => e.RoomId).HasColumnName("roomId");
 
