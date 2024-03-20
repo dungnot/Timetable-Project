@@ -18,6 +18,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Project PRN221\ProjectScheduleManagement\ProjectScheduleManagement
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Building/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVpbGRpbmdcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Building/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVpbGRpbmdcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Building/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVpbGRpbmdcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Building/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVpbGRpbmdcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Building/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVpbGRpbmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Class/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,10 +68,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Project PRN221/ProjectScheduleManagement/ProjectScheduleManagement/Pages/Room/Create.cshtml]

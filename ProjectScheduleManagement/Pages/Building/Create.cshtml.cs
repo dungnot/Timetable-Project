@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjectScheduleManagement.Models;
 
-namespace ProjectScheduleManagement.Pages.Class
+namespace ProjectScheduleManagement.Pages.Building
 {
     public class CreateModel : PageModel
     {
@@ -24,16 +24,18 @@ namespace ProjectScheduleManagement.Pages.Class
         }
 
         [BindProperty]
-        public GrClass GrClass { get; set; } = default!;
+        public Models.Building Building { get; set; } = default!;
         
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.GrClasses == null || GrClass == null)
+          if (!ModelState.IsValid || _context.Buildings == null || Building == null)
             {
                 return Page();
             }
 
-            _context.GrClasses.Add(GrClass);
+            _context.Buildings.Add(Building);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

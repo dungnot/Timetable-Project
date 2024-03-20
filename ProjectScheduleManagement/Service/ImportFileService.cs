@@ -35,18 +35,18 @@ namespace ProjectScheduleManagement.Service
             string buildingCode = roomParts[0];
             string roomCode = roomParts[1];
 
-            Schedule Schedule1 = new Schedule();
+            Schedule Schedule = new Schedule();
            
 
-            Schedule1.TeacherId = _context.Teachers.FirstOrDefault(t => t.Code == data.Teacher).Id;
-            Schedule1.RoomId = _context.Rooms.Include(r => r.Building)
+            Schedule.TeacherId = _context.Teachers.FirstOrDefault(t => t.Code == data.Teacher).Id;
+            Schedule.RoomId = _context.Rooms.Include(r => r.Building)
                                              .FirstOrDefault(r => r.Building.Code == buildingCode && r.Code == roomCode).Id;
 
-            Schedule1.SubjectId = _context.Subjects.FirstOrDefault(s => s.Code == data.Subject).Id;
-            Schedule1.ClassId = _context.GrClasses.FirstOrDefault(c => c.Code == data.Class).Id;
-            Schedule1.SlotId = _context.Slots.FirstOrDefault(s => s.SlotName == data.TimeSlot).Id;
+            Schedule.SubjectId = _context.Subjects.FirstOrDefault(s => s.Code == data.Subject).Id;
+            Schedule.ClassId = _context.GrClasses.FirstOrDefault(c => c.Code == data.Class).Id;
+            Schedule.SlotId = _context.Slots.FirstOrDefault(s => s.SlotName == data.TimeSlot).Id;
 
-            return Schedule1;
+            return Schedule;
            
         }
 

@@ -1,11 +1,11 @@
 ﻿@page
-@model ProjectScheduleManagement.Pages.Room.IndexModel
+@model ProjectScheduleManagement.Pages.Building.IndexModel
 
 @{
-    ViewData["Title"] = "Room";
+    ViewData["Title"] = "Building";
 }
 
-<h1>Room</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-page="Create" class="btn btn-primary">Create New</a>
@@ -14,22 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Room[0].Code)
+                @Html.DisplayNameFor(model => model.Building[0].Code)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Room[0].Building)
+                @Html.DisplayNameFor(model => model.Building[0].Details)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Room) {
+@foreach (var item in Model.Building) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Code)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Building.Id)
+                @Html.DisplayFor(modelItem => item.Details)
             </td>
             <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |

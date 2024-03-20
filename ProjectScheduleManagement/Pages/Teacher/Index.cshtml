@@ -2,13 +2,13 @@
 @model ProjectScheduleManagement.Pages.Teacher.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Teacher";
 }
 
-<h1>Index</h1>
+<h1>Teacher</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }

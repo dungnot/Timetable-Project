@@ -12,6 +12,7 @@ namespace ProjectScheduleManagement.Service
             _context = context;
         }
 
+        
         public string CheckSlotAndRoom(Schedule schedule)
         {
             var roomAndSlot = _context.Schedules

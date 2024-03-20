@@ -1,0 +1,39 @@
+git init tạo ổ git
+git clone tênkho - sao chép kho chứa đã tồn tại
+git status liệt kê các tệp đã sửa
+git touch ...  tạo ra 1 file 
+git add .  (cập nhật code)
+git commit -m" " ghi lại thay đổi gì khi đưa code lên
+git log --oneline thông báo lại những gì mình thêm (1 dòng)
+
+git remote add origin ... link cua repository/ noi luu tru - dung de ket noi local vs noi luu tru online
+(trước khi push hay pull thì phải kết nối)
+
+git push
+git pull origin <branch> (Lay code moi nhat)
+git branch (Kiem tra nhanh hien co)
+git branch namenhanh  (tao nhanh de code rieng)
+git checkout namenhanhmuonchuyen (chuyen sang nhanh muon chuyen sang de code)
+
+khi tao xong muon nhanh len github thi phai git push de xuat hien nhanh tren github: git push --set-upstream origin tennhanh 
+
+git rebase nhanhmuonkethop - merge 1 nhánh mà mình đang muốn gộp vào nhánh hiện tại của mìnhh
+-------------------------------------------------------
+
+vào pull request để có thể tạo yêu cầu cho chủ merge vào nhánh chính
+
+Cach day code tu local len github
+B1: git remote add origin ... link cua repository
+B2: git branch -M master
+B3: git push -u origin master
+
+??? 
+
+Khi muốn đẩy lên 1 nhánh thì phải :
+
+B1: git remote add origin <link cua repository>
+B2: git pull origin <tên nhánh đã có sẵn bạn muốn đẩy lên>
+B3: git checkout tennhanh (để đổi sang làm việc vs nhánh vừa pull xong)
+B4: thêm file hoặc bla bla trong folder mình đang làm
+B5: git add . để cập nhật r commit , git push là đc
+

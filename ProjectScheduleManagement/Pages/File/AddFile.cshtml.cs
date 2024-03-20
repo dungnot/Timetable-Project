@@ -28,6 +28,14 @@ namespace ProjectScheduleManagement.Pages.File
             if (fileUpload != null && fileUpload.Length > 0)
             {
                
+                if (!fileUpload.FileName.EndsWith(".csv", StringComparison.OrdinalIgnoreCase))
+                {
+                    
+                    ViewData["Messages"] = "File format is not correct, please import csv file.";
+                    ViewData["MessageType"] = "alert-danger";
+                    return Page();
+                }
+
                 string folder = "Uploads";
                 string filePath = _fileUploadService.UploadFile(fileUpload, folder);
                 List<CSVModelDTO> records = _fileUploadService.ReadDataScheduleFromFile(filePath);
@@ -39,8 +47,15 @@ namespace ProjectScheduleManagement.Pages.File
                 }
 
                 ViewData["Messages"] = messages;
+                ViewData["MessageType"] = messages.Any(msg => msg.Contains("successfully")) ? "alert-success" : "alert-danger";
             }
-                return RedirectToPage("/Index");
+            else
+            {
+                ViewData["Messages"] = "Please select the file to upload.";
+                ViewData["MessageType"] = "alert-danger";
+                return Page();
+            }
+                return RedirectToPage("/File/AddFile");
             }
   
     }

@@ -4,8 +4,17 @@
 @{
     ViewData["Title"] = "Add File";
 }
+
+
 <div class="container">
     <h1 class="display-4">@ViewData["Title"]</h1>
+
+    @if (ViewData["Messages"] != null)
+    {
+        <div class="alert @((string)ViewData["MessageType"])">
+            <strong>@ViewData["Messages"]</strong>
+        </div>
+    }
 
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -15,3 +24,5 @@
         <button type="submit" class="btn btn-primary" style="margin:10px">Upload File</button>
     </form>
 </div>
+
+
