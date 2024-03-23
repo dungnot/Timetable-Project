@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Management\" />
-    <Folder Include="Pages\Schedule\" />
   </ItemGroup>
 
 </Project>

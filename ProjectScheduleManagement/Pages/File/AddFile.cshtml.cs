@@ -55,7 +55,7 @@ namespace ProjectScheduleManagement.Pages.File
                 ViewData["MessageType"] = "alert-danger";
                 return Page();
             }
-                return RedirectToPage("/File/AddFile");
+                return Page();
             }
   
     }

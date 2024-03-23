@@ -8,90 +8,52 @@
     <div class="jumbotron jumbotron-fluid text-center">
     <div class="text-center">
         <h1 class="display-4">Schedule</h1>
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr class="table-primary">
-                    <th rowspan="2"></th>
-                    <th class="text-center">Mon</th>
-                    <th class="text-center">Tue</th>
-                    <th class="text-center">Wed</th>
-                    <th class="text-center">Thu</th>
-                    <th class="text-center">Fri</th>
-                    <th class="text-center">Sat</th>
-                    <th class="text-center">Sun</th>
-                </tr>
-                <tr class="table-primary">
-                    <th class="text-center">19/3</th>
-                    <th class="text-center">19/3</th>
-                    <th class="text-center">19/3</th>
-                    <th class="text-center">19/3</th>
-                    <th class="text-center">19/3</th>
-                    <th class="text-center">19/3</th>
-                    <th class="text-center">19/3</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Slot 1</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Slot 2</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Slot 3</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Slot 4</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Slot 5</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Slot 6</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
+
+            <form id="myForm">
+                <div class="form-group row">
+                    <label for="classSelect" class="col-sm-2 col-form-label">Select class: </label>
+                    <div class="col-sm-10">
+                        <select asp-for="ClassCodeSelected" id="classSelect" class="form-control" onchange="this.form.submit();">
+                            @foreach (var item in Model.GrClasses)
+                            {
+                                <option value="@item.Code">@item.Code</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th></th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <tr>
+                            <td>Slot @(i + 1)</td>
+                            @for (int j = 0; j < 7; j++)
+                            {
+                                if (Model.Data[i, j] != null)
+                                {
+                                    <td>@Model.Data[i, j].Subject.Code - @Model.Data[i, j].Teacher.Code - @Model.Data[i, j].Room.Building.Code@Model.Data[i, j].Room.Code</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
     </div>
 </div>

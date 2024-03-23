@@ -1,0 +1,103 @@
+﻿@page "{id:int?}"
+@model ProjectScheduleManagement.Pages.Schedule.EditModel
+@{
+    ViewData["Title"] = "Edit Schedule";
+}
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Edit Schedule</h1>
+
+    @if (ViewData["Messages"] != null)
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            @ViewData["Messages"]
+        </div>
+    }
+
+    <form method="post" class="needs-validation" id="editForm">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="SelectClass">Class</label>
+                <select asp-for="Schedule.ClassId" id="SelectClass" class="form-control">
+                    @foreach (var r in Model.Classes)
+                    {
+                        <option value="@r.Id">@r.Code</option>
+                    }
+                </select>
+                <div class="invalid-feedback">Please select a class.</div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="SelectSubject">Subject</label>
+                <select asp-for="Schedule.SubjectId" id="SelectSubject" class="form-control">
+                    @foreach (var r in Model.Subjects)
+                    {
+                        <option value="@r.Id">@r.Code</option>
+                    }
+                </select>
+                <div class="invalid-feedback">Please select a subject.</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="SelectRoom">Room</label>
+                <select asp-for="Schedule.RoomId" id="SelectRoom" class="form-control">
+                    @foreach (var r in Model.Rooms)
+                    {
+                        <option value="@r.Id">@r.Code</option>
+                    }
+                </select>
+                <div class="invalid-feedback">Please select a room.</div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="SelectTeacher">Teacher</label>
+                <select asp-for="Schedule.TeacherId" id="SelectTeacher" class="form-control">
+                    @foreach (var r in Model.Teachers)
+                    {
+                        <option value="@r.Id">@r.Code</option>
+                    }
+                </select>
+                <div class="invalid-feedback">Please select a teacher.</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="SelectSlot">Time Slot</label>
+                <select asp-for="Schedule.SlotId" id="SelectSlot" class="form-control">
+                    @foreach (var r in Model.Slots)
+                    {
+                        <option value="@r.Id">@r.SlotName</option>
+                    }
+                </select>
+                <div class="invalid-feedback">Please select a time slot.</div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+
+    <div>
+        @if (ViewData["Messages"] != null)
+        {
+            <h2>Results:</h2>
+            <ul>
+                @if (ViewData["Messages"] == "Saved successfully!")
+                {
+                    <p style="color:forestgreen">@ViewData["Messages"]</p>
+                }
+                else
+                {
+                    <p style="color:red">@ViewData["Messages"]</p>
+                }
+            </ul>
+        }
+    </div>
+</div>

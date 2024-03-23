@@ -29,7 +29,7 @@ namespace ProjectScheduleManagement.Service
             return 0;
         }
 
-        private Schedule GetInitialData(CSVModelDTO data)
+        private Schedule GetDatafromCSVFile(CSVModelDTO data)
         {
             string[] roomParts = data.Room.Split('-');
             string buildingCode = roomParts[0];
@@ -66,22 +66,15 @@ namespace ProjectScheduleManagement.Service
             if (messageId == 0)
             {
 
-                Schedule scheduleDTO = GetInitialData(data);
+                Schedule scheduleDTO = GetDatafromCSVFile(data);
                 string message = IsValid(scheduleDTO);
                 if (message != "")
                 {
                     return message;
                 }
-                try
-                {
                     _context.Schedules.Add(scheduleDTO);
-                   
                     _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    return FindConstraintError(scheduleDTO);
-                }
+
             }
             else
             {
@@ -114,28 +107,10 @@ namespace ProjectScheduleManagement.Service
         public string IsValid(Schedule schedule)
         {
             ValidationService validationService = new ValidationService(_context);
-
-            return validationService.CheckClassAndSubjectAll(schedule);
+            return validationService.FindConstraintError(schedule);
         }
 
-        public string FindConstraintError(Schedule schedule)
-        {
-            ValidationService validationService = new ValidationService(_context);
-            string message;
-            message = validationService.CheckSlotAndRoom(schedule);
-            if (message != "") return message;
-
-            message = validationService.CheckSlotAndTeacher(schedule);
-            if (message != "") return message;
-
-            message = validationService.CheckSlotAndClass(schedule);
-            if (message != "") return message;
-
-            message = validationService.CheckClassAndSubject(schedule);
-            if (message != "") return message;
-
-            return "";
-        }
+      
 
     }
 }

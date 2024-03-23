@@ -79,5 +79,27 @@ namespace ProjectScheduleManagement.Service
 
             return "";
         }
+
+        public string FindConstraintError(Schedule schedule)
+        {
+            ValidationService validationService = new ValidationService(_context);
+            string message;
+            message = validationService.CheckSlotAndRoom(schedule);
+            if (message != "") return message;
+
+            message = validationService.CheckSlotAndTeacher(schedule);
+            if (message != "") return message;
+
+            message = validationService.CheckSlotAndClass(schedule);
+            if (message != "") return message;
+
+            message = validationService.CheckClassAndSubject(schedule);
+            if (message != "") return message;
+
+            message = validationService.CheckClassAndSubjectAll(schedule);
+            if (message != "") return message;
+
+            return "";
+        }
     }
 }
