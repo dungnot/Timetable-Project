@@ -31,25 +31,18 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/File/AddFile">Import File</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Class/Index">Class</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Room/Index">Room</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Building/Index">Building</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Schedule/Index">Schedule</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Slot/Index">Slot</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Subject/Index">Subject</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Teacher/Index">Teacher</a>
+                            <select class="form-select" id="selectPage" onchange="location = this.value;">
+                                <option value="">Select component modifications</option>
+                                <option value="/Class/Index">Class</option>
+                                <option value="/Room/Index">Room</option>
+                                <option value="/Building/Index">Building</option>
+                                <option value="/Slot/Index">Slot</option>
+                                <option value="/Subject/Index">Subject</option>
+                                <option value="/Teacher/Index">Teacher</option>
+                            </select>
                         </li>
                     </ul>
                 </div>

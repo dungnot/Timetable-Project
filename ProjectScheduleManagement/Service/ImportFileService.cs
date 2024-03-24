@@ -96,7 +96,7 @@ namespace ProjectScheduleManagement.Service
                 }
                 else if (messageId == 5)
                 {
-                    return "Wrong slot template!";
+                    return "Wrong slot name!";
                 }
             }
 
@@ -107,7 +107,7 @@ namespace ProjectScheduleManagement.Service
         public string IsValid(Schedule schedule)
         {
             ValidationService validationService = new ValidationService(_context);
-            return validationService.FindConstraintError(schedule);
+            return validationService.ValidateSchedule(schedule, 0);
         }
 
       

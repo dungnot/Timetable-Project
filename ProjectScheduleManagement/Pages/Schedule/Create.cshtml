@@ -1,27 +1,34 @@
-﻿@page "{id:int?}"
-@model ProjectScheduleManagement.Pages.Schedule.EditModel
+﻿@page
+@model ProjectScheduleManagement.Pages.Schedule.CreateModel
 @{
-    ViewData["Title"] = "Edit Schedule";
+    ViewData["Title"] = "Create Schedule";
 }
-
+<h4>Create new schedule</h4>
 <div class="container">
-    <h1 class="mt-4 mb-4">Edit Schedule</h1>
 
     <form method="post" class="needs-validation" id="editForm">
-
-        <input type="hidden" value="@Model.ScheduleId" asp-for="ScheduleId" />
-        <input type="hidden" value="@Model.CSVData.Subject" asp-for="CSVData.Subject" />
-        <input type="hidden" value="@Model.CSVData.Class" asp-for="CSVData.Class" />
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Class: </label>
-                <input type="text" class="form-control-plaintext" asp-for="CSVData.Class" disabled>
+                <select asp-for="CSVData.Class" id="SelectClass" class="form-control">
+                    @foreach (var s in Model.Classes)
+                    {
+                        <option value="@s.Code">@s.Code</option>
+                    }
+                </select>
+                <div class="invalid-feedback">Please select a class.</div>
             </div>
 
             <div class="form-group col-md-6">
                 <label>Subject: </label>
-                <input type="text" class="form-control-plaintext" asp-for="CSVData.Subject" disabled>
+                <select asp-for="CSVData.Subject" id="SelectSubject" class="form-control">
+                    @foreach (var s in Model.Subjects)
+                    {
+                        <option value="@s.Code">@s.Code</option>
+                    }
+                </select>
+                <div class="invalid-feedback">Please select a subject.</div>
             </div>
         </div>
 
@@ -62,7 +69,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
 
     <div>

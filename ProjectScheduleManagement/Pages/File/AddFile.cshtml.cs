@@ -45,8 +45,8 @@ namespace ProjectScheduleManagement.Pages.File
                     string message = _importFileService.AddDataToDatabase(records[i]);
                     messages.Add(message);
                 }
-
-                ViewData["Messages"] = messages;
+                string messagesString = string.Join(". ", messages);
+                ViewData["Messages"] = messagesString;
                 ViewData["MessageType"] = messages.Any(msg => msg.Contains("successfully")) ? "alert-success" : "alert-danger";
             }
             else

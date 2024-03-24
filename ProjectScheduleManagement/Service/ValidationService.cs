@@ -12,94 +12,96 @@ namespace ProjectScheduleManagement.Service
             _context = context;
         }
 
-        
-        public string CheckSlotAndRoom(Schedule schedule)
+        public string CheckSlotAndRoom(Schedule schedule, int existedId)
         {
             var roomAndSlot = _context.Schedules
                                         .Include(s => s.Slot)
                                         .Include(s => s.Room)
                                             .ThenInclude(r => r.Building)
-                                        .FirstOrDefault( s => s.SlotId == schedule.SlotId && s.RoomId == schedule.RoomId);
-            if (roomAndSlot != null)
+                                        .FirstOrDefault(s => s.SlotId == schedule.SlotId && s.RoomId == schedule.RoomId);
+            if (roomAndSlot != null && roomAndSlot.Id != existedId)
             {
-                return $"Data error: There is already a schedule at Slot {roomAndSlot.Slot.SlotName} in Room {roomAndSlot.Room.Building.Code}-{roomAndSlot.Room.Code} on the same TimeSlot";
+                return $"Error: Room {roomAndSlot.Room.Building.Code}-{roomAndSlot.Room.Code} has been used in slot {roomAndSlot.Slot.SlotName}.";
+                   
             }
 
             return "";
         }
 
-        public string CheckSlotAndTeacher(Schedule schedule)
+        public string CheckSlotAndTeacher(Schedule schedule, int existedId)
         {
             var teacherAndSlot = _context.Schedules
                                         .Include(s => s.Slot)
                                         .Include(s => s.Teacher)
                                         .FirstOrDefault(s => s.SlotId == schedule.SlotId && s.TeacherId == schedule.TeacherId);
-            if (teacherAndSlot != null)
+            if (teacherAndSlot != null && teacherAndSlot.Id != existedId)
             {
-                return $"Data error: There is already a schedule at Slot {teacherAndSlot.Slot.SlotName} taught by Teacher {teacherAndSlot.Teacher.Code} on the same TimeSlot";
+                return $"Error: Teacher {teacherAndSlot.Teacher.Code} has been booked in slot {teacherAndSlot.Slot.SlotName}.";
+                    
             }
             return "";
         }
 
-        public string CheckSlotAndClass(Schedule schedule)
+        public string CheckSlotAndClass(Schedule schedule, int existedId)
         {
             var classAndSlot = _context.Schedules
                                        .Include(s => s.Slot)
                                        .Include(s => s.Class)
                                        .FirstOrDefault(s => s.SlotId == schedule.SlotId && s.ClassId == schedule.ClassId);
-            if (classAndSlot != null)
+            if (classAndSlot != null && classAndSlot.Id != existedId)
             {
-                return $"Data error: There is already a schedule at Slot {classAndSlot.Slot.SlotName} of Class {classAndSlot.Class.Code} on the same TimeSlot";
+                return $"Error: Class {classAndSlot.Class.Code} has been used slot {classAndSlot.Slot.SlotName}";
+                    
             }
             return "";
         }
 
-        public string CheckClassAndSubject(Schedule schedule)
+        public string CheckClassAndSubject(Schedule schedule, int existedId)
         {
             var classAndSubject = _context.Schedules
                                         .Include(s => s.Subject)
                                         .Include(s => s.Class)
-                                        .FirstOrDefault(s =>  s.ClassId == schedule.ClassId && s.SubjectId == schedule.SubjectId);
-            if (classAndSubject != null)
+                                        .FirstOrDefault(s => s.ClassId == schedule.ClassId && s.SubjectId == schedule.SubjectId);
+            if (classAndSubject != null && classAndSubject.Id != existedId)
             {
-                return $"Data error: Class {classAndSubject.Class.Code} already have 1 slot for subject {classAndSubject.Subject.Code} on this TimeSlot";
+
+                return $"Error: Class {classAndSubject.Class.Code} already have Subject {classAndSubject.Subject.Code}.";
+                    
             }
 
             return "";
         }
 
-        public string CheckClassAndSubjectAll(Schedule schedule)
+        public string ValidateSchedule(Schedule schedule, int ScheduleId)
         {
-            List<Schedule> schedules = new List<Schedule>();
-            schedules = _context.Schedules.Include(s => s.Class).Include(s => s.Subject).Where(s => s.ClassId == schedule.ClassId && s.SubjectId == schedule.SubjectId).ToList();
-            if (schedules.Count >= 2)
+            string message = "";
+
+            message = CheckClassAndSubject(schedule, ScheduleId);
+            if (message != "")
             {
-                return $"Data error: Class {schedules[0].Class.Code} already have subject {schedules[0].Subject.Code} in this semester.";
+                return message;
             }
 
-            return "";
+            message = CheckSlotAndRoom(schedule, ScheduleId);
+            if (message != "")
+            {
+                return message;
+            }
+
+            message = CheckSlotAndTeacher(schedule, ScheduleId);
+            if (message != "")
+            {
+                return message;
+            }
+
+            message = CheckSlotAndClass(schedule, ScheduleId);
+            if (message != "")
+            {
+                return message;
+            }
+
+            return message;
         }
 
-        public string FindConstraintError(Schedule schedule)
-        {
-            ValidationService validationService = new ValidationService(_context);
-            string message;
-            message = validationService.CheckSlotAndRoom(schedule);
-            if (message != "") return message;
-
-            message = validationService.CheckSlotAndTeacher(schedule);
-            if (message != "") return message;
-
-            message = validationService.CheckSlotAndClass(schedule);
-            if (message != "") return message;
-
-            message = validationService.CheckClassAndSubject(schedule);
-            if (message != "") return message;
-
-            message = validationService.CheckClassAndSubjectAll(schedule);
-            if (message != "") return message;
-
-            return "";
-        }
     }
 }
