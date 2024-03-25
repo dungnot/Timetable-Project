@@ -36,6 +36,10 @@ namespace ProjectScheduleManagement.Pages
             try
             {
                 await GetDataAsync();
+                //if(ClassCodeSelected == null)
+                //{
+                //    ClassCodeSelected = _context.GrClasses.FirstOrDefault().Code;
+                //}
                 List<Models.Schedule> schedules = ClassCodeSelected == null ? _context.Schedules.Include(s => s.Slot).Include(s => s.Teacher).Include(s => s.Subject).Include(s => s.Class).Include(s => s.Room).ThenInclude(r => r.Building).ToList()
                                                     : _context.Schedules.Include(s => s.Slot).Include(s => s.Teacher).Include(s => s.Subject).Include(s => s.Class).Include(s => s.Room).ThenInclude(r => r.Building).Where(x => x.Class.Code == ClassCodeSelected).ToList();
                 foreach (var item in schedules)

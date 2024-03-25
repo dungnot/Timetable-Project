@@ -27,13 +27,31 @@
                     @Html.DisplayFor(modelItem => item.Class.Code) @Html.DisplayFor(modelItem => item.Teacher.Code) @Html.DisplayFor(modelItem => item.Subject.Code) @Html.DisplayFor(modelItem => item.Slot.SlotName) @Html.DisplayFor(modelItem => item.Room.Building.Code)-@Html.DisplayFor(modelItem => item.Room.Code)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
-                    <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" onsubmit="return confirm('Are you sure you want to delete?');">
-                        <input type="hidden" value="@Model.ScheduleId" asp-for="ScheduleId" />
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <div class="d-flex">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
+                        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Are you sure you want to delete?');">
+                            <button type="submit" class="btn btn-danger" name="ScheduleId" value="@item.Id">Delete</button>
+                        </form>
+                    </div>
+                   
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@if (Model.TotalPage > 1)
+{
+    <form method="get">
+            @for (int i = 1; i < Model.TotalPage; i++)
+                @if (i == Model.PageIndex)
+                {
+                    <button type="submit" name="pageindex" value="@i" style=" font-size:1.5em; font-weight:bold">@i</button>
+                }
+                else
+                {
+                    <button type="submit" name="pageindex" value="@i">@i</button>
+                }
+       
+    </form>
+}

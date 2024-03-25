@@ -56,28 +56,29 @@ namespace ProjectScheduleManagement.Service
                 }
                 _context.Schedules.Add(newschedule);
                 _context.SaveChanges();
+               
             }
             else
             {
                 if (messageId == 1)
                 {
-                    return "";
+                    return "Teacher code do not exists";
                 }
                 else if (messageId == 2)
                 {
-                    return "";
+                    return "Subject code do not exists";
                 }
                 else if (messageId == 3)
                 {
-                    return "";
+                    return "Class code do not exists";
                 }
                 else if (messageId == 4)
                 {
-                    return "";
+                    return "Room code do not exists";
                 }
                 else if (messageId == 5)
                 {
-                    return "";
+                    return "Wrong slot name!";
                 }
             }
             return "Saved successfully!";
@@ -108,23 +109,23 @@ namespace ProjectScheduleManagement.Service
             {
                 if (messageId == 1)
                 {
-                    return "";
+                    return "Teacher code do not exists";
                 }
                 else if (messageId == 2)
                 {
-                    return "";
+                    return "Subject code do not exists";
                 }
                 else if (messageId == 3)
                 {
-                    return "";
+                    return "Class code do not exists";
                 }
                 else if (messageId == 4)
                 {
-                    return "";
+                    return "Room code do not exists";
                 }
                 else if (messageId == 5)
                 {
-                    return "";
+                    return "Wrong slot name!";
                 }
             }
             return "Saved successfully!";

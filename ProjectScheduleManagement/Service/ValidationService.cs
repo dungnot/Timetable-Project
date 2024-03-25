@@ -21,7 +21,7 @@ namespace ProjectScheduleManagement.Service
                                         .FirstOrDefault(s => s.SlotId == schedule.SlotId && s.RoomId == schedule.RoomId);
             if (roomAndSlot != null && roomAndSlot.Id != existedId)
             {
-                return $"Error: Room {roomAndSlot.Room.Building.Code}-{roomAndSlot.Room.Code} has been used in slot {roomAndSlot.Slot.SlotName}.";
+                return $"Room {roomAndSlot.Room.Building.Code}-{roomAndSlot.Room.Code} has been used in Slot {roomAndSlot.Slot.SlotName}.";
                    
             }
 
@@ -36,7 +36,7 @@ namespace ProjectScheduleManagement.Service
                                         .FirstOrDefault(s => s.SlotId == schedule.SlotId && s.TeacherId == schedule.TeacherId);
             if (teacherAndSlot != null && teacherAndSlot.Id != existedId)
             {
-                return $"Error: Teacher {teacherAndSlot.Teacher.Code} has been booked in slot {teacherAndSlot.Slot.SlotName}.";
+                return $"Teacher {teacherAndSlot.Teacher.Code} has been booked in Slot {teacherAndSlot.Slot.SlotName}.";
                     
             }
             return "";
@@ -50,7 +50,7 @@ namespace ProjectScheduleManagement.Service
                                        .FirstOrDefault(s => s.SlotId == schedule.SlotId && s.ClassId == schedule.ClassId);
             if (classAndSlot != null && classAndSlot.Id != existedId)
             {
-                return $"Error: Class {classAndSlot.Class.Code} has been used slot {classAndSlot.Slot.SlotName}";
+                return $"Class {classAndSlot.Class.Code} has been used Slot {classAndSlot.Slot.SlotName}";
                     
             }
             return "";
@@ -65,7 +65,7 @@ namespace ProjectScheduleManagement.Service
             if (classAndSubject != null && classAndSubject.Id != existedId)
             {
 
-                return $"Error: Class {classAndSubject.Class.Code} already have Subject {classAndSubject.Subject.Code}.";
+                return $"Class {classAndSubject.Class.Code} already have Subject {classAndSubject.Subject.Code}.";
                     
             }
 
